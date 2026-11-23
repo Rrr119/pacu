@@ -1,0 +1,101 @@
+{
+  "account_id": "111122223333",
+  "name": "exercise-a",
+  "collection": {
+    "complete": true,
+    "denied_actions": []
+  },
+  "groups": [
+    {
+      "GroupName": "Developers",
+      "Policies": [
+        {
+          "PolicyName": "developer-self-service",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "iam:AttachUserPolicy",
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "identities": [
+    {
+      "Type": "user",
+      "Name": "alice",
+      "Arn": "arn:aws:iam::111122223333:user/alice",
+      "PermissionsConfirmed": true,
+      "Groups": [
+        {
+          "GroupName": "Developers"
+        }
+      ],
+      "Policies": [
+        {
+          "PolicyName": "rotate-my-keys",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "iam:CreateAccessKey",
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Type": "role",
+      "Name": "deployer",
+      "Arn": "arn:aws:iam::111122223333:role/deployer",
+      "PermissionsConfirmed": true,
+      "Policies": [
+        {
+          "PolicyName": "launch-with-profile",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:PassRole",
+                  "ec2:RunInstances"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "Type": "user",
+      "Name": "platform-admin",
+      "Arn": "arn:aws:iam::111122223333:user/platform-admin",
+      "PermissionsConfirmed": true,
+      "Policies": [
+        {
+          "PolicyName": "admin",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "*",
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

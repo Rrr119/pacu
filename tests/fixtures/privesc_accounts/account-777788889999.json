@@ -1,0 +1,46 @@
+{
+  "account_id": "777788889999",
+  "name": "exercise-c",
+  "collection": {
+    "complete": false,
+    "denied_actions": [
+      "iam:ListUsers"
+    ],
+    "permission_checks": {
+      "iam:ListUsers": {
+        "status": "denied",
+        "detail": "AccessDenied"
+      },
+      "iam:ListRoles": {
+        "status": "ok",
+        "detail": ""
+      }
+    },
+    "notes": [
+      "Simulated partial collection for an exercise account."
+    ]
+  },
+  "identities": [
+    {
+      "Type": "user",
+      "Name": "partial-user",
+      "Arn": "arn:aws:iam::777788889999:user/partial-user",
+      "PermissionsConfirmed": true,
+      "Policies": [
+        {
+          "PolicyName": "pass-role",
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "iam:PassRole",
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
